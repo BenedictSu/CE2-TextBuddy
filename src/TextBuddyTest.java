@@ -30,6 +30,8 @@ public class TextBuddyTest {
         try {
             TextBuddy.add("add little brown fox");
             assertEquals("1. little brown fox", TextBuddy.display());
+            TextBuddy.clear();
+            assertEquals("test.txt is empty", TextBuddy.display());
         } catch (IOException e) {
             throw e;
         }
@@ -38,6 +40,7 @@ public class TextBuddyTest {
     @Test
     public void testDelete() throws IOException{
         try {
+            TextBuddy.add("add little brown fox");
             assertEquals("deleted from test.txt: \"little brown fox\"", TextBuddy.delete("delete 1"));
         } catch (IOException e) {
             throw e;
