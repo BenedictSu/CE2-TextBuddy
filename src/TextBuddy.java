@@ -43,7 +43,7 @@ public class TextBuddy {
 
     public static void main(String[] args) throws IOException {
         originalFileName = args[0];
-        clear(); // To empty the file of any existing content
+        clear();
         displayToUser(String.format(MESSAGE_WELCOME, originalFileName));
         userInstruction();
     }
@@ -89,7 +89,6 @@ public class TextBuddy {
         case EXIT:
             System.exit(0);
         default:
-            // throw an error if the command is not recognized
             throw new Error("Unrecognized command type");
         }
     }
