@@ -67,8 +67,16 @@ public class TextBuddyTest {
     @Test
     public void testSearch() throws IOException {
         TextBuddy.clear();
-        TextBuddy.add("add little brown fox");
-        assertEquals("little brown fox", TextBuddy.search("search fox"));
+        TextBuddy.add("add c");
+        TextBuddy.add("add d");
+        TextBuddy.add("add B is here");
+        TextBuddy.add("add a");
+        assertEquals("B is here", TextBuddy.search("search B"));
+        TextBuddy.clear();
+        TextBuddy.add("add c");
+        TextBuddy.add("add d");
+        TextBuddy.add("add B is here");
+        TextBuddy.add("add a");
         assertEquals("test.txt does not contain \"moon\"", TextBuddy.search("search moon"));
         TextBuddy.clear();
     }
