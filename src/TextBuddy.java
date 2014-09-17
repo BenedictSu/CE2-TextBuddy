@@ -233,7 +233,8 @@ public class TextBuddy {
     }
 
     private static String removeFirstWord(String userCommand) {
-        return userCommand.replace(getFirstWord(userCommand), "").trim();
+        String remainingCommand = userCommand.replace(getFirstWord(userCommand), "").trim();
+        return remainingCommand;
     }
 
     public static void readInputFile(String fileName) throws IOException {
