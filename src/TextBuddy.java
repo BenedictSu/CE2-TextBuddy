@@ -346,6 +346,11 @@ public class TextBuddy {
             if (nextLine.contains(keyWord)) {
                 break;
             }
+            nextLine = inputFile.readLine();
+        }
+        if (nextLine == null) {
+            nextLine = originalFileName + " does not contain \"" + keyWord
+                    + "\"";
         }
         inputFile.close();
         return nextLine;
