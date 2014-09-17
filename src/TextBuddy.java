@@ -36,10 +36,11 @@ public class TextBuddy {
     private static final String MESSAGE_ADD = "added to %1$s: \"";
     private static final String MESSAGE_DELETE = "deleted from %1$s: \"";
     private static final String MESSAGE_CLEAR = "all content deleted from %1$s";
+    private static final String MESSAGE_SORT = "%1$s is sorted";
 
     // These are the possible command types
     enum CommandType {
-        ADD, DISPLAY, DELETE, CLEAR, EXIT, INVALID
+        ADD, DISPLAY, DELETE, CLEAR, EXIT, INVALID, SORT
     };
 
     public static void main(String[] args) throws IOException {
@@ -96,6 +97,8 @@ public class TextBuddy {
             return delete(userCommand);
         case CLEAR:
             return clear();
+        case SORT:
+            return sort();
         case INVALID:
             return String.format(MESSAGE_INVALID_FORMAT, userCommand);
         case EXIT:
@@ -125,6 +128,8 @@ public class TextBuddy {
             return CommandType.CLEAR;
         } else if (commandTypeString.equalsIgnoreCase("exit")) {
             return CommandType.EXIT;
+        } else if (commandTypeString.equalsIgnoreCase("sort")) {
+            return CommandType.SORT; 
         } else {
             return CommandType.INVALID;
         }
@@ -289,7 +294,7 @@ public class TextBuddy {
     }
     
     public static String sort() {
-        return null;
+        return String.format(MESSAGE_SORT, originalFileName);
     }
 
 }
