@@ -69,7 +69,7 @@ public class TextBuddyTest {
         TextBuddy.clear();
         TextBuddy.add("add little brown fox");
         assertEquals("little brown fox", TextBuddy.search("search fox"));
-        assertEquals("test.txt does not contain \"fox\"", TextBuddy.search("search moon"));
+        assertEquals("test.txt does not contain \"moon\"", TextBuddy.search("search moon"));
         TextBuddy.clear();
     }
 }
