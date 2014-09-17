@@ -65,7 +65,9 @@ public class TextBuddyTest {
     }
     
     @Test
-    public void testSearch() {
-        assertEquals(null, TextBuddy.search());
+    public void testSearch() throws IOException {
+        TextBuddy.clear();
+        TextBuddy.add("add little brown fox");
+        assertEquals("little brown fox", TextBuddy.search("fox"));
     }
 }
