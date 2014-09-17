@@ -63,4 +63,9 @@ public class TextBuddyTest {
         assertEquals("test.txt is sorted", TextBuddy.sort());
         assertEquals("1. a\n2. B\n3. c\n4. d", TextBuddy.display());
     }
+    
+    @Test
+    public void testSearch() {
+        assertEquals(null, TextBuddy.search());
+    }
 }

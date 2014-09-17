@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -321,6 +320,10 @@ public class TextBuddy {
 
     private static void sortData(ArrayList<String> data) {
         Collections.sort(data, String.CASE_INSENSITIVE_ORDER);
+    }
+    
+    public static String search() {
+        return null;
     }
 
 }
