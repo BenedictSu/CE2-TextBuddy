@@ -44,7 +44,7 @@ public class TextBuddy {
     public static void main(String[] args) throws IOException {
         originalFileName = args[0];
         clear(); // To empty the file of any existing content
-        System.out.println(String.format(MESSAGE_WELCOME, originalFileName));
+        displayToUser(String.format(MESSAGE_WELCOME, originalFileName));
         userInstruction();
     }
 
@@ -52,8 +52,12 @@ public class TextBuddy {
         while (true) {
             String userCommand = userInput();
             String feedback = executeCommand(userCommand);
-            System.out.println(feedback);
+            displayToUser(feedback);
         }
+    }
+
+    private static void displayToUser(String message) {
+        System.out.println(message);
     }
 
     private static String userInput() {
