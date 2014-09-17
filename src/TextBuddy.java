@@ -221,16 +221,22 @@ public class TextBuddy {
         int lineNumber = firstLineNumber;
 
         try {
+            if (nextLine != null) {
+                if (lineNumber == inputNumber) {
+                    newInput = nextLine;
+                    nextLine = inputFile.readLine();
+                } else {
+                    fileContent = nextLine;
+                    nextLine = inputFile.readLine();
+                    lineNumber++;
+                }
+            }
             while (nextLine != null) {
                 if (lineNumber == inputNumber) {
                     newInput = nextLine;
                     nextLine = inputFile.readLine();
                 } else {
-                    if (lineNumber == 1) {
-                        fileContent = nextLine;
-                    } else {
-                        fileContent = fileContent + "\n" + nextLine;
-                    }
+                    fileContent = fileContent + "\n" + nextLine;
                     nextLine = inputFile.readLine();
                     lineNumber++;
                 }
