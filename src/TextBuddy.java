@@ -40,7 +40,7 @@ public class TextBuddy {
 
     // These are the possible command types
     enum CommandType {
-        ADD, DISPLAY, DELETE, CLEAR, EXIT, INVALID, SORT
+        ADD, DISPLAY, DELETE, CLEAR, EXIT, INVALID, SORT, SEARCH
     };
 
     public static void main(String[] args) throws IOException {
@@ -100,6 +100,8 @@ public class TextBuddy {
             return clear();
         case SORT:
             return sort();
+        case SEARCH:
+            return search(userCommand);
         case INVALID:
             return String.format(MESSAGE_INVALID_FORMAT, userCommand);
         case EXIT:
@@ -131,6 +133,8 @@ public class TextBuddy {
             return CommandType.EXIT;
         } else if (commandTypeString.equalsIgnoreCase("sort")) {
             return CommandType.SORT;
+        } else if (commandTypeString.equalsIgnoreCase("sort")) {
+            return CommandType.SEARCH;
         } else {
             return CommandType.INVALID;
         }
@@ -321,9 +325,30 @@ public class TextBuddy {
     private static void sortData(ArrayList<String> data) {
         Collections.sort(data, String.CASE_INSENSITIVE_ORDER);
     }
-    
-    public static String search() {
-        return null;
+
+    /**
+     * search
+     * 
+     * @param userCommand
+     *            the command entered by the user
+     * @return the correct line containing the search term
+     */
+    public static String search(String userCommand) throws IOException {
+        String result = searchFile(userCommand);
+        return result;
+    }
+
+    private static String searchFile(String userCommand) throws IOException {
+        readInputFile(originalFileName);
+        String keyWord = (removeFirstWord(userCommand));
+        String nextLine = inputFile.readLine();
+        while (nextLine != null) {
+            if (nextLine.contains(keyWord)) {
+                break;
+            }
+        }
+        inputFile.close();
+        return nextLine;
     }
 
 }
