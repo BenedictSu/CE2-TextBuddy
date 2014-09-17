@@ -4,7 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -76,7 +77,8 @@ public class TextBuddy {
     /**
      * executeCommand
      * 
-     * @param userCommand the command entered by the user
+     * @param userCommand
+     *            the command entered by the user
      * @return the feedback to the user
      */
     private static String executeCommand(String userCommand) throws IOException {
@@ -129,7 +131,7 @@ public class TextBuddy {
         } else if (commandTypeString.equalsIgnoreCase("exit")) {
             return CommandType.EXIT;
         } else if (commandTypeString.equalsIgnoreCase("sort")) {
-            return CommandType.SORT; 
+            return CommandType.SORT;
         } else {
             return CommandType.INVALID;
         }
@@ -138,7 +140,8 @@ public class TextBuddy {
     /**
      * add
      * 
-     * @param userCommand the command entered by the user
+     * @param userCommand
+     *            the command entered by the user
      * @return the feedback to the user confirming a successful add
      */
     public static String add(String userCommand) throws IOException {
@@ -214,7 +217,8 @@ public class TextBuddy {
     /**
      * delete
      * 
-     * @param userCommand the command entered by the user
+     * @param userCommand
+     *            the command entered by the user
      * @return the feedback to the user confirming a successful delete
      */
     public static String delete(String userCommand) throws IOException {
@@ -253,7 +257,8 @@ public class TextBuddy {
     /**
      * clear()
      * 
-     * @return the feedback to the user confirming a successful clearing of the text file
+     * @return the feedback to the user confirming a successful clearing of the
+     *         text file
      */
     public static String clear() throws IOException {
         writeOutputFile(originalFileName);
@@ -267,7 +272,8 @@ public class TextBuddy {
     }
 
     private static String removeFirstWord(String userCommand) {
-        String remainingCommand = userCommand.replace(getFirstWord(userCommand), "").trim();
+        String remainingCommand = userCommand.replace(
+                getFirstWord(userCommand), "").trim();
         return remainingCommand;
     }
 
@@ -292,9 +298,44 @@ public class TextBuddy {
             throw e;
         }
     }
-    
-    public static String sort() {
+
+    public static String sort() throws IOException {
+        ArrayList<String> data = new ArrayList<String>();
+        String fileContent = "";
+        getData(data);
+        fileContent = getSortedData(data, fileContent);
+        writeToFile(fileContent);
         return String.format(MESSAGE_SORT, originalFileName);
+    }
+
+    private static String getSortedData(ArrayList<String> data,
+            String fileContent) {
+        if (!data.isEmpty()) {
+            if (data.size() > 1) {
+                sortData(data);
+                fileContent = data.get(0);
+                for (int i = 1; i < data.size(); i++) {
+                    fileContent = fileContent + "\n" + data.get(i);
+                }
+            } else {
+                fileContent = data.get(0);                
+            }
+        }
+        return fileContent;
+    }
+
+    private static void getData(ArrayList<String> data) throws IOException {
+        readInputFile(originalFileName);
+        String nextLine = inputFile.readLine();
+        while (nextLine != null) {
+            data.add(nextLine);
+            nextLine = inputFile.readLine();
+        }
+        inputFile.close();
+    }
+
+    private static void sortData(ArrayList<String> data) {
+        Collections.sort(data, String.CASE_INSENSITIVE_ORDER);
     }
 
 }
