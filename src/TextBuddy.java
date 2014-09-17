@@ -60,13 +60,24 @@ public class TextBuddy {
         System.out.println(message);
     }
 
+    /**
+     * userInput
+     * 
+     * @return the command entered by the user
+     */
     private static String userInput() {
         System.out.print("command: ");
         String command = scanner.nextLine();
         return command;
     }
 
-    public static String executeCommand(String userCommand) throws IOException {
+    /**
+     * executeCommand
+     * 
+     * @param userCommand the command entered by the user
+     * @return the feedback to the user
+     */
+    private static String executeCommand(String userCommand) throws IOException {
         if (userCommand.trim().isEmpty()) {
             return String.format(MESSAGE_INVALID_FORMAT, userCommand);
         }
@@ -118,6 +129,12 @@ public class TextBuddy {
         }
     }
 
+    /**
+     * add
+     * 
+     * @param userCommand the command entered by the user
+     * @return the feedback to the user confirming a successful add
+     */
     public static String add(String userCommand) throws IOException {
         readInputFile(originalFileName);
         String newInput = (removeFirstWord(userCommand));
@@ -151,6 +168,11 @@ public class TextBuddy {
         return fileContent;
     }
 
+    /**
+     * display
+     * 
+     * @return the content of the text file
+     */
     public static String display() throws IOException {
         readInputFile(originalFileName);
         String nextLine = inputFile.readLine();
@@ -183,6 +205,12 @@ public class TextBuddy {
         return fileContent;
     }
 
+    /**
+     * delete
+     * 
+     * @param userCommand the command entered by the user
+     * @return the feedback to the user confirming a successful delete
+     */
     public static String delete(String userCommand) throws IOException {
         readInputFile(originalFileName);
         String newInput = (removeFirstWord(userCommand));
@@ -221,6 +249,11 @@ public class TextBuddy {
         }
     }
 
+    /**
+     * clear()
+     * 
+     * @return the feedback to the user confirming a successful clearing of the text file
+     */
     public static String clear() throws IOException {
         writeOutputFile(originalFileName);
         try {
@@ -237,7 +270,7 @@ public class TextBuddy {
         return remainingCommand;
     }
 
-    public static void readInputFile(String fileName) throws IOException {
+    private static void readInputFile(String fileName) throws IOException {
         try {
             inputFile = new BufferedReader(new FileReader(fileName));
         } catch (FileNotFoundException e) {
@@ -251,7 +284,7 @@ public class TextBuddy {
         outputFile.close();
     }
 
-    public static void writeOutputFile(String fileName) throws IOException {
+    private static void writeOutputFile(String fileName) throws IOException {
         try {
             outputFile = new BufferedWriter(new FileWriter(fileName));
         } catch (IOException e) {
