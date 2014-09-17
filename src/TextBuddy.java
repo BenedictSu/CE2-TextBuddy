@@ -149,14 +149,10 @@ public class TextBuddy {
         String newInput = (removeFirstWord(userCommand));
         String nextLine = inputFile.readLine();
         String fileContent = "";
-        try {
-            fileContent = readAndAdd(newInput, nextLine);
-            writeToFile(fileContent);
-            return String.format(MESSAGE_ADD + newInput + "\"",
-                    originalFileName);
-        } catch (IOException e) {
-            throw e;
-        }
+        fileContent = readAndAdd(newInput, nextLine);
+        writeToFile(fileContent);
+        return String.format(MESSAGE_ADD + newInput + "\"", originalFileName);
+
     }
 
     private static String readAndAdd(String newInput, String nextLine)
@@ -186,16 +182,13 @@ public class TextBuddy {
         readInputFile(originalFileName);
         String nextLine = inputFile.readLine();
         String fileContent = "";
-        try {
-            fileContent = readAndFormat(nextLine, fileContent);
-            inputFile.close();
-            if (fileContent.isEmpty()) {
-                fileContent = originalFileName + " is empty";
-            }
-            return fileContent;
-        } catch (IOException e) {
-            throw e;
+        fileContent = readAndFormat(nextLine, fileContent);
+        inputFile.close();
+        if (fileContent.isEmpty()) {
+            fileContent = originalFileName + " is empty";
         }
+        return fileContent;
+
     }
 
     private static String readAndFormat(String nextLine, String fileContent)
@@ -229,29 +222,26 @@ public class TextBuddy {
         String fileContent = "";
         int lineNumber = firstLineNumber;
 
-        try {
-            while (nextLine != null) {
-                if (lineNumber == inputNumber) {
-                    newInput = nextLine;
-                    nextLine = inputFile.readLine();
-                    inputNumber = 0;
+        while (nextLine != null) {
+            if (lineNumber == inputNumber) {
+                newInput = nextLine;
+                nextLine = inputFile.readLine();
+                inputNumber = 0;
+            } else {
+                if (lineNumber == firstLineNumber) {
+                    fileContent = nextLine;
                 } else {
-                    if (lineNumber == firstLineNumber) {
-                        fileContent = nextLine;
-                    } else {
-                        fileContent = fileContent + "\n" + nextLine;
-                    }
-                    nextLine = inputFile.readLine();
-                    lineNumber++;
+                    fileContent = fileContent + "\n" + nextLine;
                 }
+                nextLine = inputFile.readLine();
+                lineNumber++;
             }
-            inputFile.close();
-            writeToFile(fileContent);
-            return String.format(MESSAGE_DELETE + newInput + "\"",
-                    originalFileName);
-        } catch (IOException e) {
-            throw e;
         }
+        inputFile.close();
+        writeToFile(fileContent);
+        return String
+                .format(MESSAGE_DELETE + newInput + "\"", originalFileName);
+
     }
 
     /**
@@ -262,13 +252,10 @@ public class TextBuddy {
      */
     public static String clear() throws IOException {
         writeOutputFile(originalFileName);
-        try {
-            outputFile.write("");
-            outputFile.close();
-            return String.format(MESSAGE_CLEAR, originalFileName);
-        } catch (IOException e) {
-            throw e;
-        }
+        outputFile.write("");
+        outputFile.close();
+        return String.format(MESSAGE_CLEAR, originalFileName);
+
     }
 
     private static String removeFirstWord(String userCommand) {
@@ -278,11 +265,7 @@ public class TextBuddy {
     }
 
     private static void readInputFile(String fileName) throws IOException {
-        try {
-            inputFile = new BufferedReader(new FileReader(fileName));
-        } catch (FileNotFoundException e) {
-            throw e;
-        }
+        inputFile = new BufferedReader(new FileReader(fileName));
     }
 
     private static void writeToFile(String fileContent) throws IOException {
@@ -292,11 +275,7 @@ public class TextBuddy {
     }
 
     private static void writeOutputFile(String fileName) throws IOException {
-        try {
-            outputFile = new BufferedWriter(new FileWriter(fileName));
-        } catch (IOException e) {
-            throw e;
-        }
+        outputFile = new BufferedWriter(new FileWriter(fileName));
     }
 
     public static String sort() throws IOException {
@@ -318,7 +297,7 @@ public class TextBuddy {
                     fileContent = fileContent + "\n" + data.get(i);
                 }
             } else {
-                fileContent = data.get(0);                
+                fileContent = data.get(0);
             }
         }
         return fileContent;
