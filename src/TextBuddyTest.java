@@ -24,5 +24,14 @@ public class TextBuddyTest {
             throw e;
         }
     }
+    
+    @Test
+    public void testDelete() throws IOException{
+        try {
+            assertEquals("deleted from test.txt: \"little brown fox\"", TextBuddy.delete("delete 1"));
+        } catch (IOException e) {
+            throw e;
+        }
+    }
 
 }

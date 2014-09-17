@@ -180,7 +180,7 @@ public class TextBuddy {
         return fileContent;
     }
 
-    private static String delete(String userCommand) throws IOException {
+    public static String delete(String userCommand) throws IOException {
         readInputFile(originalFileName);
         String newInput = (removeFirstWord(userCommand));
         int inputNumber = Integer.valueOf(newInput);
