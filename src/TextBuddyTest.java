@@ -15,5 +15,14 @@ public class TextBuddyTest {
             throw e;
         }
     }
+    
+    @Test
+    public void testDisplay() throws IOException{
+        try {
+            assertEquals("1. little brown fox", TextBuddy.display());
+        } catch (IOException e) {
+            throw e;
+        }
+    }
 
 }

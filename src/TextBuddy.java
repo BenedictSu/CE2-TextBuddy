@@ -148,7 +148,7 @@ public class TextBuddy {
         return fileContent;
     }
 
-    private static String display() throws IOException {
+    public static String display() throws IOException {
         readInputFile(originalFileName);
         String nextLine = inputFile.readLine();
         String fileContent = "";
