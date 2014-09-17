@@ -73,7 +73,7 @@ public class TextBuddy {
 
         String commandTypeString = getFirstWord(userCommand);
 
-        COMMAND_TYPE commandType = determineCommandType(commandTypeString);
+        CommandType commandType = determineCommandType(commandTypeString);
 
         switch (commandType) {
         case ADD:
@@ -99,23 +99,23 @@ public class TextBuddy {
         return commandTypeString;
     }
 
-    private static COMMAND_TYPE determineCommandType(String commandTypeString) {
+    private static CommandType determineCommandType(String commandTypeString) {
         if (commandTypeString == null) {
             throw new Error("command type string cannot be null!");
         }
 
         if (commandTypeString.equalsIgnoreCase("add")) {
-            return COMMAND_TYPE.ADD;
+            return CommandType.ADD;
         } else if (commandTypeString.equalsIgnoreCase("display")) {
-            return COMMAND_TYPE.DISPLAY;
+            return CommandType.DISPLAY;
         } else if (commandTypeString.equalsIgnoreCase("delete")) {
-            return COMMAND_TYPE.DELETE;
+            return CommandType.DELETE;
         } else if (commandTypeString.equalsIgnoreCase("clear")) {
-            return COMMAND_TYPE.CLEAR;
+            return CommandType.CLEAR;
         } else if (commandTypeString.equalsIgnoreCase("exit")) {
-            return COMMAND_TYPE.EXIT;
+            return CommandType.EXIT;
         } else {
-            return COMMAND_TYPE.INVALID;
+            return CommandType.INVALID;
         }
     }
 
