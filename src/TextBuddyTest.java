@@ -61,5 +61,9 @@ public class TextBuddyTest {
             throw e;
         }
     }
+    
+    public void testSort() {
+        assertEquals(null, TextBuddy.sort());
+    }
 
 }

@@ -287,5 +287,9 @@ public class TextBuddy {
             throw e;
         }
     }
+    
+    public static String sort() {
+        return null;
+    }
 
 }
