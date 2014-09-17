@@ -17,8 +17,18 @@ public class TextBuddyTest {
     }
     
     @Test
+    public void testClear() throws IOException{
+        try {
+            assertEquals("all content deleted from test.txt", TextBuddy.clear());
+        } catch (IOException e) {
+            throw e;
+        }
+    }
+    
+    @Test
     public void testDisplay() throws IOException{
         try {
+            TextBuddy.add("add little brown fox");
             assertEquals("1. little brown fox", TextBuddy.display());
         } catch (IOException e) {
             throw e;

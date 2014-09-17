@@ -218,7 +218,7 @@ public class TextBuddy {
         }
     }
 
-    private static String clear() throws IOException {
+    public static String clear() throws IOException {
         writeOutputFile(originalFileName);
         try {
             outputFile.write("");
