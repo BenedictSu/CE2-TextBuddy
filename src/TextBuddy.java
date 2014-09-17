@@ -27,7 +27,7 @@ public class TextBuddy {
 
     private static BufferedReader inputFile;
     private static BufferedWriter outputFile;
-    private static String originalFileName;
+    private static String originalFileName = "test.txt";
     private static Scanner scanner = new Scanner(System.in);
 
     private static final String MESSAGE_INVALID_FORMAT = "invalid command format :%1$s";
@@ -115,7 +115,7 @@ public class TextBuddy {
         }
     }
 
-    private static String add(String userCommand) throws IOException {
+    public static String add(String userCommand) throws IOException {
         readInputFile(originalFileName);
         String newInput = (removeFirstWord(userCommand));
         String nextLine = inputFile.readLine();
