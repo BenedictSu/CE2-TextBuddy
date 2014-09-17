@@ -67,7 +67,7 @@ public class TextBuddy {
     }
 
     public static String executeCommand(String userCommand) throws IOException {
-        if (userCommand.trim().equals("")) {
+        if (userCommand.trim().isEmpty()) {
             return String.format(MESSAGE_INVALID_FORMAT, userCommand);
         }
 
