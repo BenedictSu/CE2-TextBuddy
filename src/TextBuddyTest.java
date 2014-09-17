@@ -46,9 +46,9 @@ public class TextBuddyTest {
             assertEquals("test.txt is empty", TextBuddy.display());
     }
     
+    @Test
     public void testSort() throws IOException {
         TextBuddy.add("add little brown fox");
         assertEquals("test.txt is sorted", TextBuddy.sort());
     }
-
 }
