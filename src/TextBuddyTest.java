@@ -32,6 +32,9 @@ public class TextBuddyTest {
             assertEquals("1. little brown fox", TextBuddy.display());
             TextBuddy.clear();
             assertEquals("test.txt is empty", TextBuddy.display());
+            TextBuddy.add("add little brown fox");
+            TextBuddy.add("add jump over the moon");
+            assertEquals("1. little brown fox\n2. jump over the moon", TextBuddy.display());          
         } catch (IOException e) {
             throw e;
         }
