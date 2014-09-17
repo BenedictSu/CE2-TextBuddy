@@ -181,7 +181,7 @@ public class TextBuddy {
         try {
             fileContent = readAndFormat(nextLine, fileContent);
             inputFile.close();
-            if (fileContent == "") {
+            if (fileContent.isEmpty()) {
                 fileContent = originalFileName + " is empty";
             }
             return fileContent;
