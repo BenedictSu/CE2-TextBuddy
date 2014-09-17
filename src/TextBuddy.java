@@ -225,8 +225,9 @@ public class TextBuddy {
                 if (lineNumber == inputNumber) {
                     newInput = nextLine;
                     nextLine = inputFile.readLine();
+                    inputNumber = 0;
                 } else {
-                    if (lineNumber == 1) {
+                    if (lineNumber == firstLineNumber) {
                         fileContent = nextLine;
                     } else {
                         fileContent = fileContent + "\n" + nextLine;

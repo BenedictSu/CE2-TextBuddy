@@ -43,8 +43,20 @@ public class TextBuddyTest {
     @Test
     public void testDelete() throws IOException{
         try {
+            TextBuddy.clear();
             TextBuddy.add("add little brown fox");
             assertEquals("deleted from test.txt: \"little brown fox\"", TextBuddy.delete("delete 1"));
+            assertEquals("test.txt is empty", TextBuddy.display());
+            TextBuddy.add("add little brown fox");
+            TextBuddy.add("add jump over the moon");
+            assertEquals("deleted from test.txt: \"jump over the moon\"", TextBuddy.delete("delete 2"));
+            assertEquals("deleted from test.txt: \"little brown fox\"", TextBuddy.delete("delete 1"));
+            assertEquals("test.txt is empty", TextBuddy.display());
+            TextBuddy.add("add little brown fox");
+            TextBuddy.add("add jump over the moon");
+            assertEquals("deleted from test.txt: \"little brown fox\"", TextBuddy.delete("delete 1"));
+            assertEquals("deleted from test.txt: \"jump over the moon\"", TextBuddy.delete("delete 1"));
+            assertEquals("test.txt is empty", TextBuddy.display());
         } catch (IOException e) {
             throw e;
         }
