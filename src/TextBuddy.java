@@ -37,7 +37,7 @@ public class TextBuddy {
     private static final String MESSAGE_CLEAR = "all content deleted from %1$s";
 
     // These are the possible command types
-    enum COMMAND_TYPE {
+    enum CommandType {
         ADD, DISPLAY, DELETE, CLEAR, EXIT, INVALID
     };
 
