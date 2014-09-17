@@ -56,7 +56,11 @@ public class TextBuddyTest {
     @Test
     public void testSort() throws IOException {
         TextBuddy.clear();
-        TextBuddy.add("add little brown fox");
+        TextBuddy.add("add c");
+        TextBuddy.add("add d");
+        TextBuddy.add("add B");
+        TextBuddy.add("add a");
         assertEquals("test.txt is sorted", TextBuddy.sort());
+        assertEquals("1. a\n2. B\n3. c\n4. d", TextBuddy.display());
     }
 }
