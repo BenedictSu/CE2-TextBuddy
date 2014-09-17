@@ -29,6 +29,7 @@ public class TextBuddy {
     private static BufferedWriter outputFile;
     private static String originalFileName = "test.txt";
     private static Scanner scanner = new Scanner(System.in);
+    private static int firstLineNumber = 1;
 
     private static final String MESSAGE_INVALID_FORMAT = "invalid command format :%1$s";
     private static final String MESSAGE_WELCOME = "Welcome to TextBuddy. %1$s is ready for use";
@@ -217,7 +218,7 @@ public class TextBuddy {
         int inputNumber = Integer.valueOf(newInput);
         String nextLine = inputFile.readLine();
         String fileContent = "";
-        int lineNumber = 1;
+        int lineNumber = firstLineNumber;
 
         try {
             if (nextLine != null) {
