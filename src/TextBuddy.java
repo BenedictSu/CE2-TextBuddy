@@ -245,7 +245,7 @@ public class TextBuddy {
     }
 
     /**
-     * clear()
+     * clear
      * 
      * @return the feedback to the user confirming a successful clearing of the
      *         text file
@@ -278,6 +278,12 @@ public class TextBuddy {
         outputFile = new BufferedWriter(new FileWriter(fileName));
     }
 
+    /**
+     * sort
+     * 
+     * @return the feedback to the user confirming a successful sorting of the
+     *         text file
+     */
     public static String sort() throws IOException {
         ArrayList<String> data = new ArrayList<String>();
         String fileContent = "";
